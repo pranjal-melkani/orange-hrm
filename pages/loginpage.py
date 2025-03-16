@@ -20,4 +20,11 @@ class Loginpage(Basedriver):
         self.click_on_element(self.LOGIN_BTN)
     
     def click_on_forgot_password(self):
-        self.click_on_element(self.FORGOT_PASSWORD_LINK)
+        self.click_on_element(self.FOR)
+
+    def is_logged_in(self):
+        try:
+            self.wait_until_element_is_visible("//header//*[text()='Dashboard']")
+            return True
+        except Exception:
+            return False
