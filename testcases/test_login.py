@@ -1,7 +1,6 @@
 from pages.loginpage import Loginpage
-from selenium.webdriver.common.by import By
-import time
-from base.basedriver import Basedriver
+from pages.dashboardpage import Dashboardpage
+
 
 
 class Testlogin:
@@ -13,5 +12,19 @@ class Testlogin:
         lp.enter_username(username)
         lp.enter_password(password)
         lp.click_on_login()
-        assert lp.is_logged_in()
+        is_logged_in = lp.is_logged_in()
+
+        dp = Dashboardpage(driver)
+        dp.logout()
+        assert is_logged_in
         
+    def test_invalid_credentials(self, driver):
+        username = "asd"
+        password = "asdsad"
+
+        lp = Loginpage(driver)
+        lp.enter_username(username)
+        lp.enter_password(password)
+        lp.click_on_login()
+        error_visible = lp.invalid_credentials_error_visible()
+        assert error_visible
