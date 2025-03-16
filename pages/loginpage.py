@@ -38,3 +38,17 @@ class Loginpage(Basedriver):
             return True
         except Exception:
             return False
+    
+    def enter_username_error_visible(self):
+        try:
+            self.wait_until_element_is_visible(self.BLANK_USERNAME_ERROR)
+            return True
+        except Exception:
+            return False
+    
+    def enter_password_error_visible(self):
+        try:
+            self.wait_until_element_is_visible(self.BLANK_PASSWORD_ERROR)
+            return True
+        except Exception:
+            return False
