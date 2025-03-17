@@ -1,7 +1,6 @@
 from pages.loginpage import Loginpage
 from pages.dashboardpage import Dashboardpage
-
-
+import pytest
 
 class Testlogin:
     def test_blank_entries(self, driver):
@@ -13,7 +12,7 @@ class Testlogin:
             assert True
         else:
             assert False
-    
+
     def test_invalid_credentials(self, driver):
         username = "asd"
         password = "asdsad"
